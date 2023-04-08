@@ -1,22 +1,68 @@
-import SplitScreen from './SplitScreen'
+//Dummy list data to showcase this design pattern
 
-function LeftHandComponent(){
-  return <h1>Left!</h1>;
-}
-function RightHandComponent(){
-  return <p>Right</p>;
-}
+import RegularList from "./RegularList";
+import SmallPersonListItem from "./people/SmallPersonListItem";
+import LargePersonListItem from "./people/LargePersonListItem";
+import Modal from "./Modal";
+import LargeProductListItem from "./Products/LargeProductListItem";
+
+
+const people = [{
+	name: 'John Doe',
+	age: 54,
+	hairColor: 'brown',
+	hobbies: ['swimming', 'bicycling', 'video games'],
+}, {
+	name: 'Brenda Smith',
+	age: 33,
+	hairColor: 'black',
+	hobbies: ['golf', 'mathematics'],
+}, {
+	name: 'Jane Garcia',
+	age: 27,
+	hairColor: 'blonde',
+	hobbies: ['biology', 'medicine', 'gymnastics'],
+}];
+
+
+const products = [{
+	name: 'Flat-Screen TV',
+	price: '$300',
+	description: 'Huge LCD screen, a great deal',
+	rating: 4.5,
+}, {
+	name: 'Basketball',
+	price: '$10',
+	description: 'Just like the pros use',
+	rating: 3.8,
+}, {
+	name: 'Running Shoes',
+	price: '$120',
+	description: 'State-of-the-art technology for optimum running',
+	rating: 4.2,
+}];
 
 function App() {
-  return (
-    <SplitScreen 
-      LeftWeight={1}
-      RightWeight={3}
-    >
-      <LeftHandComponent />
-      <RightHandComponent />
-    </SplitScreen>
-  );
+	return (
+
+    //This is one List that can display multiple list components that have different props
+    <>
+      {/* <RegularList 
+      items = {people}
+      resourceName="person"
+      itemComponent={SmallPersonListItem} />
+
+      <RegularList 
+      items = {people}
+      resourceName="person"
+      itemComponent={LargePersonListItem} /> */}
+      <Modal>
+        <LargeProductListItem 
+        product={products[0]}
+        />
+      </Modal>
+    </>
+	);
 }
 
 export default App;
