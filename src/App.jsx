@@ -1,21 +1,18 @@
-import { ControlledModal } from "./ControlledModal";
-import { useState } from "react";
-function App() {
+import printProps from "./printProps";
+import { UserInfo } from "./UserInfo";
+import { UserInfoForm } from "./UserInfoForm";
 
-	const [shouldShowModal, setShouldShowModal] = useState(false);
+// const UserInfoWrapped = printProps(UserInfo);
+// const UserInfoWithLoader = withUser(UserInfo, '123');
 
-	return (
-		
+function App(){
+	return(
 		<>
+		<UserInfoForm />
 
-			<ControlledModal shouldShow={shouldShowModal} onRequestClose={()=>setShouldShowModal(false)}>
-				<h1>Hello</h1>
-			</ControlledModal>
-			<button onClick={()=> setShouldShowModal(!shouldShowModal)}>
-				{shouldShowModal?'hide Modal':'show Modal'}
-			</button>
 		</>
-	);
+
+	)
 }
 
 export default App;
