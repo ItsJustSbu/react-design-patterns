@@ -5,7 +5,7 @@ function App(){
 	return(
 
 		<>
-			<UserInfo />
+			<UserInfo userId={"123"}/>
 		</>
 
 	)
