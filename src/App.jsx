@@ -1,4 +1,5 @@
-import UncontrolledOnboardingFlow from "./UncontrolledOnbordingFlow";
+import ControlledOnboardingFlow from './ControlledOnboardingFlow';
+import { useState } from 'react';
 
 const StepOne = ({goToNext}) => (
 <>
@@ -27,16 +28,26 @@ const StepFour = ({goToNext}) => (
 
 function App() {
 
+	const [onboardingData, setOnboardingData] = useState({});
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+	const goToNext = stepData =>{
+        setOnboardingData({...onboardingData, stepData});
+		setCurrentIndex(currentIndex+1);
+	}
+
 	return (
 		
 		<>
 
-		<UncontrolledOnboardingFlow onFinish={data=>console.log(data)}>
+		<ControlledOnboardingFlow currentIndex={currentIndex} 
+		onNext={goToNext}
+		>
 			<StepOne />
 			<StepTwo />
 			<StepThree />
 			<StepFour />
-		</UncontrolledOnboardingFlow>
+		</ControlledOnboardingFlow>
 
 		</>
 	);
