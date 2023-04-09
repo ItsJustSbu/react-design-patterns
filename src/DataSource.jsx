@@ -1,18 +1,17 @@
 //takes care of loading user data
 import React, { useState,useEffect } from "react";
-import axios from "axios";
 
 
-function ResourceLoader({ResourceUrl,ResourceName,children}){
+function DataSource({getDataFunction=()=>{},ResourceName,children}){
     const [state,setState] = useState(null);
 
     //should do research on useEffect and making API requests from API endpoints.
     useEffect(()=>{
         (async()=>{
-            const response = await axios.get(ResourceUrl);
-            setState(response.data);
+            const data = await getDataFunction();
+            setState(data);
         })();
-    },[ResourceUrl]);
+    },[getDataFunction]);
 
     return(
         <>
@@ -29,4 +28,4 @@ function ResourceLoader({ResourceUrl,ResourceName,children}){
 
 }
 
-export default ResourceLoader;
+export default DataSource;
